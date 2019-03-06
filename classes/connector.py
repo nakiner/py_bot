@@ -1,6 +1,7 @@
 from telethon.sync import TelegramClient
 from config import Config
 import asyncio
+import socks
 
 
 class Connector:
@@ -9,7 +10,8 @@ class Connector:
     def start() -> TelegramClient:
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        client = TelegramClient(Config.session, Config.api_id, Config.api_hash, loop=loop)
+        client = TelegramClient(Config.session, Config.api_id, Config.api_hash, loop=loop,
+                                proxy=(socks.SOCKS5, 'worldpics.pro', 2016, 'true', 'nakiner', 'nakiner1'))
         return client
 
 # client.send_message('me', 'Hello! Talking to you from Telethon')
