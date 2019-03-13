@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'])
-async def index():
+def index():
     abort(500)
 
 

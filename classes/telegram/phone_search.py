@@ -1,17 +1,10 @@
-import asyncio
 from telethon import events
-from telethon.sync import TelegramClient
-from config import Config
 from classes.connector import Connector
+
 
 class PhoneSearch:
 
     def search_phone(phone):
-
-        # loop = asyncio.new_event_loop()
-        # asyncio.set_event_loop(loop)
-        # client = TelegramClient(Config.session, Config.api_id, Config.api_hash, loop=loop)
-        # client.connect()
 
         client = Connector.start()
         client.connect()

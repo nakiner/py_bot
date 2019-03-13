@@ -1,5 +1,5 @@
 from telethon.sync import TelegramClient
-from config import Config
+from classes.config import Config
 import asyncio
 import socks
 
@@ -11,15 +11,5 @@ class Connector:
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         client = TelegramClient(Config.session, Config.api_id, Config.api_hash, loop=loop,
-                                proxy=(socks.SOCKS5, 'worldpics.pro', 2016, 'true', 'nakiner', 'nakiner1'))
+                                proxy=(socks.SOCKS5, Config.proxy_ip, Config.proxy_port, 'true', Config.proxy_login, Config.proxy_pass))
         return client
-
-# client.send_message('me', 'Hello! Talking to you from Telethon')
-# client.send_file('fighter_kit', '/Users/admin/Downloads/tech-bg.jpg')
-
-
-# @client.on(events.NewMessage(incoming=True, pattern='(?i)hi'))
-# async def handler(event):
-#     await event.reply('Hello!')
-
-# client.run_until_disconnected()
